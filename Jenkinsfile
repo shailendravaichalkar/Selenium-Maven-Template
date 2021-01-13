@@ -7,21 +7,27 @@ pipeline {
       maven "localMaven"
     }
    stages {
-      stage('Build') {
+      stage('Pull Sourse Code') {
 		steps {
 			git 'https://github.com/shailendravaichalkar/MavenSelenium.git'
 		}
       }
-      stage('Test') {           
+      stage('test') {           
         steps {
-          //parallel(
-            //Firefox: {
-            //  bat "mvn install -Dbrowser=firefox -Dheadless=false"
-           // },
-            // Chrome: {
-              bat "mvn install -Dbrowser=chrome -Dheadless=false"
-           // }
-          //)
+          parallel(
+            Firefox: {
+              bat "mvn clean test -Dbrowser=firefox -Dheadless=false"
+            },
+            IE: {
+              bat "mvn clean test -Dbrowser=ie -Dheadless=false"
+            }
+            Opera: {
+              bat "mvn clean test -Dbrowser=opera -Dheadless=false"
+            }
+            Edge: {
+              bat "mvn clean test -Dbrowser=edge -Dheadless=false"
+            }
+          )
         }
       } 
 	  stage('Deploy in CERT') {
