@@ -14,7 +14,8 @@ pipeline {
       }
       stage('Test and Install') {           
         steps {
-			bat "mvn clean install -Dbrowser=chrome -Dheadless=true"
+			// bat "mvn clean install -Dbrowser=chrome -Dheadless=true"
+      bat "mvn clean verify -P-selenium-tests"
         }
       } 
 	  stage('Deploy') {
