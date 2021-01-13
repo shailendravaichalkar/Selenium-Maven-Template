@@ -30,7 +30,10 @@ pipeline {
             Edge: {
               // sleep 10
               bat "mvn test -Dbrowser=edge -Dheadless=false"
-            }
+            },
+            Chrome: {
+              // sleep 10
+              bat "mvn test -Dbrowser=chrome -Dheadless=false"
           )
         }
       } 
