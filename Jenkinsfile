@@ -14,7 +14,13 @@ pipeline {
       }
       stage('Test and Install') {           
         steps {
-			    bat "mvn install -Dbrowser=firefox -Dheadless=false"
+          parallel(
+          a: {
+			      bat "mvn install -Dbrowser=firefox -Dheadless=false"
+          },
+          b: {
+            bat "mvn install -Dbrowser=chrome -Dheadless=false"
+          }
         }
       } 
 	  stage('Deploy') {
