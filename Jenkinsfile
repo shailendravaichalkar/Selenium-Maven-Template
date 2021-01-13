@@ -16,20 +16,20 @@ pipeline {
         steps {
           parallel(
             Firefox: {
-              sleep 10
-              bat "mvn clean test -Dbrowser=firefox -Dheadless=false"
+              //sleep 10
+              bat "mvn test -Dbrowser=firefox -Dheadless=false"
             },
             InternetExplorer: {
-              sleep 10
-              bat "mvn clean test -Dbrowser=ie -Dheadless=false"
+              // sleep 10
+              bat "mvn test -Dbrowser=ie -Dheadless=false"
             },
             Opera: {
-              sleep 10
-              bat "mvn clean test -Dbrowser=opera -Dheadless=false"
+              // sleep 10
+              bat "mvn test -Dbrowser=opera -Dheadless=false"
             },
             Edge: {
-              sleep 10
-              bat "mvn clean test -Dbrowser=edge -Dheadless=false"
+              // sleep 10
+              bat "mvn test -Dbrowser=edge -Dheadless=false"
             }
           )
         }
