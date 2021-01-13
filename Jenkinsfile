@@ -34,10 +34,15 @@ pipeline {
           )
         }
       } 
-	  stage('Deploy in CERT') {
-	    steps {
+	    stage('package') {
+	     steps {
+	        bat "mvn install"
+	     }
+      }
+      stage('Deploy in CERT') {
+	     steps {
 	        archiveArtifacts 'target/*.jar'
-	    }
+	     }
       }
 	} 
 	post {
