@@ -12,19 +12,19 @@ pipeline {
 			git 'https://github.com/shailendravaichalkar/MavenSelenium.git'
 		}
       }
-      stage('Test and Install') {           
+      stage('Test') {           
         steps {
           parallel(
-            FireFox: {
+            Test 1: {
               bat "mvn install -Dbrowser=firefox -Dheadless=false"
             },
-            Edge: {
-              bat "mvn install -Dbrowser=edge -Dheadless=false"
+            Test 2: {
+              bat "mvn install -Dbrowser=opera -Dheadless=false"
             }
           )
         }
       } 
-	  stage('Deploy') {
+	  stage('Deploy in CERT') {
 	    steps {
 	        archiveArtifacts 'target/*.jar'
 	    }
