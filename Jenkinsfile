@@ -14,7 +14,14 @@ pipeline {
       }
       stage('Test') {           
         steps {
+          parallel(
+            Firefox: {
               bat "mvn install -Dbrowser=firefox -Dheadless=false"
+            },
+            Opera: {
+              bat "mvn install -Dbrowser=chrome -Dheadless=false"
+            }
+          )
         }
       } 
 	  stage('Deploy in CERT') {
