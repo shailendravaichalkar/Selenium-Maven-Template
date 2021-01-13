@@ -15,11 +15,11 @@ pipeline {
       stage('Test and Install') {           
         steps {
           parallel(
-            a: {
+            FireFox: {
               bat "mvn install -Dbrowser=firefox -Dheadless=false"
             },
-            b: {
-              bat "mvn install -Dbrowser=chrome -Dheadless=false"
+            Edge: {
+              bat "mvn install -Dbrowser=edge -Dheadless=false"
             }
           )
         }
