@@ -15,10 +15,10 @@ pipeline {
       stage('Test') {           
         steps {
           parallel(
-            Test 1: {
+            Firefox: {
               bat "mvn install -Dbrowser=firefox -Dheadless=false"
             },
-            Test 2: {
+            Opera: {
               bat "mvn install -Dbrowser=opera -Dheadless=false"
             }
           )
