@@ -14,6 +14,7 @@ pipeline {
       }
       stage('test') {           
         steps {
+          bat "mvn clean compile"
           parallel(
             Firefox: {
               //sleep 10
