@@ -18,13 +18,16 @@ pipeline {
             Firefox: {
               bat "mvn clean test -Dbrowser=firefox -Dheadless=false"
             },
-            IE: {
+            InternetExplorer: {
+              sleep 10
               bat "mvn clean test -Dbrowser=ie -Dheadless=false"
             },
             Opera: {
+              sleep 20
               bat "mvn clean test -Dbrowser=opera -Dheadless=false"
             },
             Edge: {
+              sleep 30
               bat "mvn clean test -Dbrowser=edge -Dheadless=false"
             }
           )
