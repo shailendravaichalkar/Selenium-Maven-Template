@@ -7,15 +7,15 @@ pipeline {
       maven "localMaven"
     }
    stages {
-      stage('Pull Sourse Code') {
+      stage('Build') {
 		steps {
 			git 'https://github.com/shailendravaichalkar/MavenSelenium.git'
+      bat "mvn clean compile"
 		}
       }
       stage('test') {           
         steps {
-          bat "mvn clean compile"
-          parallel(
+           parallel(
             Firefox: {
               //sleep 10
               bat "mvn test -Dbrowser=firefox -Dheadless=false"
