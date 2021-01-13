@@ -20,10 +20,10 @@ pipeline {
             },
             IE: {
               bat "mvn clean test -Dbrowser=ie -Dheadless=false"
-            }
+            },
             Opera: {
               bat "mvn clean test -Dbrowser=opera -Dheadless=false"
-            }
+            },
             Edge: {
               bat "mvn clean test -Dbrowser=edge -Dheadless=false"
             }
